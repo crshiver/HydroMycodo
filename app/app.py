@@ -154,3 +154,4 @@ def update():
     flash("OTA Update complete – restarting!")
     return redirect("/")
 import app.smart_update  # Smart OTA + telemetry system
+import app.signup
