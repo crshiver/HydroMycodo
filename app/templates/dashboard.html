@@ -29,3 +29,19 @@
   </div>
 </body>
 </html>
+<div class="text-center mt-5">
+  <h3>Live Camera + AI Diagnosis</h3>
+  <img src="/static/latest.jpg" class="img-fluid rounded" style="max-height:400px">
+  <h4 class="mt-3">{{ sensors.get("ai/plant_health", {}).get("value", "Analyzing...") }}</h4>
+</div>
+
+<div class="text-center mt-5">
+  <h4>Grow Mode</h4>
+  <select class="form-select w-50 mx-auto">
+    <option>DWC (Deep Water Culture)</option>
+    <option>NFT (Nutrient Film Technique)</option>
+    <option>Aeroponics</option>
+    <option>Soil / Coco</option>
+    <option selected>Custom</option>
+  </select>
+</div>
