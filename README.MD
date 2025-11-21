@@ -1,47 +1,178 @@
-﻿# HydroMycodo v2.1 – An open-source grow controller that learns from real grows
+Here is the clean, copy-paste-ready README, with no extra commentary.
+You can paste this directly into GitHub.
 
-A simple project started by one grower (Crshiver) and an AI (Grok) because commercial systems were too expensive and too closed.
+⸻
 
-It just works and already does more than most $1000+ controllers.
+🚀 HydroMycodo
 
-### What you get today (real hardware tested)
+Modular Raspberry Pi + ESP32 Automation Platform (Early Alpha)
 
-- One-line install on any Raspberry Pi
-- Unlimited ESP32 wireless sensors (no hubs, no limits)
-- Auto-detected local sensors (DHT22, SHT4x, BME680, SCD41, CCS811, Atlas pH/EC)
-- Secure login + dark-mode dashboard + historical graphs
-- PID control with real dosing pumps
-- Live camera + AI plant-health detection (disease & deficiency)
-- Auto pH/EC calibration
-- Pushover phone alerts
-- Web-based nutrient recipe editor (DWC, NFT, aeroponics, soil, cannabis, herbs)
-- One-click OTA updates
-- Full data logging
-- 100 % local by default – runs forever offline
-- GPL-3.0 – you own it completely
+HydroMycodo is an open-source greenhouse automation framework designed to be modular, flexible, and easy to extend. The project is in early alpha and currently focuses on the core foundations:
+	•	Raspberry Pi backend
+	•	MQTT communication
+	•	ESP32 sensor/actuator nodes
+	•	Simple on/off control of pumps (via SSR or relay)
+	•	Basic install scripts
 
-### Optional community data sharing (you control it)
+This README explains the current state, what works, and where we’re headed.
 
-HydroMycodo can anonymously send daily summaries (strain, week, pH/EC targets, yield, AI health reports) to a public open-grow database.
-No personal info, no IP addresses, no photos – just pure grow data.
+⸻
 
-Goal: build the largest open-source dataset of real grows ever created so everyone gets better recipes, faster.
+✅ Current Capabilities (Early Alpha)
 
-Toggle in Settings → “Contribute to open-grow science” (off by default).
+🧠 Raspberry Pi Backend
+	•	Python backend (app.py)
+	•	Connects to Mosquitto (MQTT)
+	•	Receives sensor data from ESP32 nodes
+	•	Sends actuator commands back to nodes
+	•	Can run as:
+	•	Systemd service (hydromycodo.service)
+	•	Docker container (Dockerfile + docker-compose)
 
-### Compared to commercial controllers
+📡 MQTT Communication
 
-| Feature                       | HydroMycodo v2.1 | Typical $800-$2000 system |
-|-------------------------------|------------------|---------------------------|
-| Unlimited wireless sensors    | Yes              | No (4-16 max)             |
-| AI plant disease detection    | Yes              | No                        |
-| One-click OTA updates         | Yes              | Rare                      |
-| Web recipe editor             | Yes              | No                        |
-| Community-driven strain data  | Yes (opt-in)     | Never                     |
-| Full source + GPL-3.0         | Yes              | No                        |
-| Price                         | Free             | $800-$2000+               |
+Clear topic structure:
+	•	Sensor publish:
+hydromycodo/sensors/<node>/<type>
+	•	Actuator control:
+hydromycodo/actuators/<zone>/<device>/set
 
-### Install (one command)
+🔌 ESP32 Nodes
 
-```bash
+Included example firmware supports:
+	•	WiFi + MQTT
+	•	Reading sensors (e.g. temp/humidity)
+	•	Controlling pumps via SSR or relay
+	•	Simple ON/OFF commands via MQTT
+
+🔧 Installers
+	•	install.sh (native Pi install)
+	•	install-docker.sh (Docker install)
+
+🗂 Repository Layout
+
+app/               # Python backend modules
+app.py             # Backend entry point
+esp32_firmware/    # ESP32 example code
+Dockerfile         # Backend container build
+docker-compose.yml # Backend + MQTT stack
+docker/            # Mosquitto config
+install.sh         # Native Pi install
+install-docker.sh  # Docker install
+hydromycodo.service# Systemd service
+
+HydroMycodo is fully operational for basic MQTT-based environmental monitoring and pump control.
+
+⸻
+
+⚠️ Not Yet Implemented (Planned)
+
+The following features are not implemented yet:
+	•	Full web dashboard
+	•	User accounts / authentication
+	•	Historical charts / data visualization
+	•	Automation rules engine
+	•	PID nutrient/pH dosing
+	•	pH/EC calibration tools
+	•	Camera integration
+	•	AI plant-health analysis
+	•	OTA firmware updates
+	•	Nutrient recipe editor
+	•	Multi-zone management UI
+	•	Community data sharing
+
+These features are part of the long-term vision but are not available yet.
+
+⸻
+
+🧭 Roadmap (Help Wanted)
+
+HydroMycodo’s vision is a full modular automation system.
+We are actively looking for contributors in the following areas:
+
+🔹 Phase 1 — Core System (In Progress)
+	•	Modular backend (FastAPI/Flask)
+	•	Stable MQTT handling
+	•	Node registry (online/offline)
+	•	Local sensor support (DHT22/BME/BME680)
+	•	SQLite data logging
+	•	Minimal dashboard
+
+🔹 Phase 2 — Automation
+	•	Rules engine (threshold-based)
+	•	PID dosing control
+	•	pH/EC calibration workflows
+	•	Alert system (Pushover/Telegram)
+
+🔹 Phase 3 — UI/UX
+	•	Full dashboard (dark mode)
+	•	Live sensor tiles
+	•	Historical graphs
+	•	Configuration pages
+	•	Recipe builder
+
+🔹 Phase 4 — Advanced Features
+	•	Camera snapshots
+	•	AI plant-health detection
+	•	Long-term analytics
+	•	Optional cloud sync
+
+🔹 Phase 5 — OTA & Cloud
+	•	Pi and ESP32 OTA updates
+	•	Encrypted backups
+	•	Multi-site deployments
+
+Contributors for Python, MQTT, FastAPI, frontend, ESP32, and ML/AI are especially welcome.
+
+⸻
+
+👋 Contributing
+
+Ways to help:
+	•	Add code to backend or ESP32 firmware
+	•	Improve Docker or systemd deployments
+	•	Build UI pages or graphs
+	•	Add support for new sensors/actuators
+	•	Write documentation
+	•	Open issues with suggestions or bugs
+
+Any contribution—small or large—is appreciated.
+
+⸻
+
+📥 Installation
+
+Raspberry Pi (native)
+
 curl -sSL https://raw.githubusercontent.com/crshiver/HydroMycodo/main/install.sh | bash
+
+Docker (Pi or Linux)
+
+curl -sSL https://raw.githubusercontent.com/crshiver/HydroMycodo/main/install-docker.sh | bash
+
+After installation, open:
+
+http://<pi-ip>:8000
+
+
+⸻
+
+📜 License
+
+MIT License — free for personal and commercial use.
+
+⸻
+
+❤️ Acknowledgements
+
+Inspired by systems like Mycodo and Home Assistant, but aiming to remain lightweight, modular, and fully open-source.
+
+⸻
+
+If you’d like, I can also generate:
+	•	ROADMAP.md
+	•	CONTRIBUTING.md
+	•	Architecture diagrams (PNG/SVG)
+	•	ESP32 example nodes (sensor_node_v1, pump_node_v1)
+
+Just tell me what you want next.
