@@ -1,16 +1,47 @@
-﻿# HydroMycodo
+﻿# HydroMycodo v2.1 – An open-source grow controller that learns from real grows
 
-Open-source Mycodo-inspired hydroponic & greenhouse controller
-Raspberry Pi 5/4 + unlimited ESP32 nodes via MQTT with auto-discovery
+A simple project started by one grower (Crshiver) and an AI (Grok) because commercial systems were too expensive and too closed.
 
-Created by **Crshiver** (concept & lead) and **Grok by xAI** (code)
+It just works and already does more than most $1000+ controllers.
 
-v1.0 – complete & working
-- Dark-mode dashboard
-- Local sensors (DHT22, SHT4x, BME680, SCD41, Atlas pH/EC…)
-- ESP32 auto-discovery
-- PID controllers
-- Login (admin / hydro2025)
+### What you get today (real hardware tested)
 
-One-command install:
-curl -sSL https://raw.githubusercontent.com/Crshiver/HydroMycodo/main/install.sh | bash
+- One-line install on any Raspberry Pi
+- Unlimited ESP32 wireless sensors (no hubs, no limits)
+- Auto-detected local sensors (DHT22, SHT4x, BME680, SCD41, CCS811, Atlas pH/EC)
+- Secure login + dark-mode dashboard + historical graphs
+- PID control with real dosing pumps
+- Live camera + AI plant-health detection (disease & deficiency)
+- Auto pH/EC calibration
+- Pushover phone alerts
+- Web-based nutrient recipe editor (DWC, NFT, aeroponics, soil, cannabis, herbs)
+- One-click OTA updates
+- Full data logging
+- 100 % local by default – runs forever offline
+- GPL-3.0 – you own it completely
+
+### Optional community data sharing (you control it)
+
+HydroMycodo can anonymously send daily summaries (strain, week, pH/EC targets, yield, AI health reports) to a public open-grow database.
+No personal info, no IP addresses, no photos – just pure grow data.
+
+Goal: build the largest open-source dataset of real grows ever created so everyone gets better recipes, faster.
+
+Toggle in Settings → “Contribute to open-grow science” (off by default).
+
+### Compared to commercial controllers
+
+| Feature                       | HydroMycodo v2.1 | Typical $800-$2000 system |
+|-------------------------------|------------------|---------------------------|
+| Unlimited wireless sensors    | Yes              | No (4-16 max)             |
+| AI plant disease detection    | Yes              | No                        |
+| One-click OTA updates         | Yes              | Rare                      |
+| Web recipe editor             | Yes              | No                        |
+| Community-driven strain data  | Yes (opt-in)     | Never                     |
+| Full source + GPL-3.0         | Yes              | No                        |
+| Price                         | Free             | $800-$2000+               |
+
+### Install (one command)
+
+```bash
+curl -sSL https://raw.githubusercontent.com/crshiver/HydroMycodo/main/install.sh | bash

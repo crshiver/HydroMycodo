@@ -153,3 +153,4 @@ def update():
     subprocess.run(["sudo","systemctl","restart","hydromycodo"])
     flash("OTA Update complete – restarting!")
     return redirect("/")
+import app.smart_update  # Smart OTA + telemetry system
