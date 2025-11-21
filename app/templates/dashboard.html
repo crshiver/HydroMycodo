@@ -6,22 +6,19 @@
   <meta http-equiv="refresh" content="20">
 </head>
 <body class="bg-black text-white">
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <nav class="navbar navbar-dark bg-dark mb-4">
     <div class="container-fluid">
-      <a class="navbar-brand" href="/">HydroMycodo v1.1</a>
-      <div>
-        <a class="btn btn-outline-light me-2" href="/pid">PID</a>
-        <a class="btn btn-outline-danger" href="/logout">Logout</a>
-      </div>
+      <span class="navbar-brand">HydroMycodo v1.2 – LIVE</span>
+      <a href="/logout" class="btn btn-outline-danger">Logout</a>
     </div>
   </nav>
-  <div class="container mt-4">
+  <div class="container">
     <div class="row">
       {% for topic, d in sensors.items() if d.value != "—" %}
       <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
-        <div class="card bg-dark border border-success">
+        <div class="card bg-dark border-success">
           <div class="card-body text-center">
-            <h5 class="card-title">{{ topic.replace("hydro/","").replace("local/","") | replace("_"," ") | title }}</h5>
+            <h5>{{ topic.replace("hydro/","").replace("local/","") | replace("_"," ") | title }}</h5>
             <h2>{{ d.value }}</h2>
             <small class="text-muted">{{ d.time }}</small>
           </div>

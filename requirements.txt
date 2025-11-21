@@ -1,0 +1,9 @@
+﻿Flask-SQLAlchemy==3.0.5
+flask-login==0.6.3
+simple-pid==2.0.1
+adafruit-circuitpython-dht
+adafruit-circuitpython-shtc3
+adafruit-circuitpython-bme680
+adafruit-circuitpython-scd4x
+adafruit-circuitpython-ccs811
+smbus2
