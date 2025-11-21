@@ -113,3 +113,43 @@ if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000)
 import app.pid_control, app.camera_ai  # auto-starts on import
 import app.calibration, app.push_alerts, app.recipes
+@app.route("/recipes", methods=["GET","POST"])
+@login_required
+def recipes():
+    if request.method == "POST":
+        name = request.form["name"]
+        ph = float(request.form["ph"])
+        ec = float(request.form["ec"])
+        weeks = int(request.form["weeks"])
+        with open("app/recipes.json", "r+") as f:
+            data = json.load(f)
+            data[name] = {"ph": ph, "ec": ec, "weeks": weeks}
+            f.seek(0); json.dump(data, f, indent=2); f.truncate()
+        flash("Recipe saved!")
+    with open("app/recipes.json") as f:
+        recipes = json.load(f)
+    return render_template("recipes.html", recipes=recipes)
+@app.route("/recipes", methods=["GET","POST"])
+@login_required
+def recipes():
+    if request.method == "POST":
+        name = request.form["name"]
+        ph = float(request.form["ph"])
+        ec = float(request.form["ec"])
+        weeks = int(request.form["weeks"])
+        with open("app/recipes.json", "r+") as f:
+            data = json.load(f)
+            data[name] = {"ph": ph, "ec": ec, "weeks": weeks}
+            f.seek(0); json.dump(data, f, indent=2); f.truncate()
+        flash("Recipe saved!")
+    with open("app/recipes.json") as f:
+        recipes = json.load(f)
+    return render_template("recipes.html", recipes=recipes)
+import subprocess
+@app.route("/update", methods=["POST"])
+@login_required
+def update():
+    subprocess.run(["git","pull"], cwd="/home/pi/HydroMycodo")
+    subprocess.run(["sudo","systemctl","restart","hydromycodo"])
+    flash("OTA Update complete – restarting!")
+    return redirect("/")

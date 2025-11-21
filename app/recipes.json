@@ -1,0 +1,6 @@
+﻿{
+  "DWC Lettuce": {"ph": 5.8, "ec": 1.2, "weeks": 6},
+  "NFT Basil": {"ph": 6.0, "ec": 1.4, "weeks": 8},
+  "Aeroponics Tomatoes": {"ph": 5.9, "ec": 2.2, "weeks": 12},
+  "Cannabis Flower": {"ph": 6.2, "ec": 2.0, "weeks": 9}
+}
