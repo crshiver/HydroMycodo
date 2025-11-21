@@ -112,3 +112,4 @@ if __name__ == "__main__":
             db.session.commit()
     app.run(host="0.0.0.0", port=5000)
 import app.pid_control, app.camera_ai  # auto-starts on import
+import app.calibration, app.push_alerts, app.recipes

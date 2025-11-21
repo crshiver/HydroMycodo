@@ -45,3 +45,9 @@
     <option selected>Custom</option>
   </select>
 </div>
+<div class="alert alert-info text-center">
+  <strong>Current Recipe:</strong> {{ sensors.get("system/recipe", {}).get("value", "None") }} 
+  | Week {{ sensors.get("system/week", {}).get("value", "0") }}
+  | Target pH: {{ RECIPES.get(sensors.get("system/recipe", {}).get("value", ""), {}).get("ph", "—") }}
+  | Target EC: {{ RECIPES.get(sensors.get("system/recipe", {}).get("value", ""), {}).get("ec", "—") }}
+</div>
