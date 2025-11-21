@@ -1,0 +1,10 @@
+﻿[Unit]
+Description=HydroMycodo
+After=network.target
+[Service]
+WorkingDirectory=/home/pi/HydroMycodo/app
+ExecStart=/home/pi/hydro-venv/bin/gunicorn -w 4 -b 0.0.0.0:5000 app:app
+Restart=always
+User=pi
+[Install]
+WantedBy=multi-user.target
