@@ -1,0 +1,25 @@
+version: "3.9"
+
+services:
+  mqtt:
+    image: eclipse-mosquitto:2
+    container_name: hydromycodo_mqtt
+    restart: unless-stopped
+    ports:
+      - "1883:1883"
+    volumes:
+      - ./docker/mosquitto.conf:/mosquitto/config/mosquitto.conf
+
+  app:
+    build: .
+    container_name: hydromycodo_app
+    restart: unless-stopped
+    depends_on:
+      - mqtt
+    environment:
+      - MQTT_HOST=mqtt
+      - MQTT_PORT=1883
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./data:/app/data
