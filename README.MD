@@ -1,7 +1,4 @@
-Here is the clean, copy-paste-ready README, with no extra commentary.
-You can paste this directly into GitHub.
 
-⸻
 
 🚀 HydroMycodo
 
